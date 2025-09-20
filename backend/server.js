@@ -9,6 +9,8 @@ const cors = require('cors')
 const runBatch = require('./scripts/fetchAlldetails');
 require('./config/mongoose')
 
+
+
 //cors config
 const allowedOrigins = [
     "http://localhost:5173", // dev

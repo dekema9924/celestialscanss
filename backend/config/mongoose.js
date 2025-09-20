@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { MongooseUrl } = require('./url');
 
 try {
+
     mongoose.connect(MongooseUrl).then(() => {
         const state = mongoose.connection.readyState
         const dbName = mongoose.connection.name;
