@@ -1,0 +1,94 @@
+const dotenv = require("dotenv");
+const puppeteer = require("puppeteer");
+
+dotenv.config();
+const port = 3001
+const express = require('express')
+const apiRouter = require('./routes/apiRouter')
+const userRouter = require('./routes/userRouter')
+const app = express()
+const cors = require('cors')
+const runBatch = require('./scripts/fetchAlldetails');
+require('./config/mongoose')
+
+//middlewares
+//cors config
+const allowedOrigins = [
+    "http://localhost:5173", // dev
+    "https://glistening-fairy-45ce54.netlify.app" // prod
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        // allow requests with no origin (like mobile apps, curl, postman)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+            return callback(new Error(msg), false);
+        }
+        return callback(null, true);
+    },
+    credentials: true // allow cookies to be sent
+}));
+app.use('/manga', apiRouter)
+app.use('/auth', userRouter)
+
+
+
+
+//test route
+app.get('/', (req, res) => {
+
+    if (process.env.NODE_ENV === "production") {
+        dotenv.config({ path: ".env.production" });
+    } else {
+        dotenv.config({ path: ".env.development" });
+
+
+    }
+    res.send('celestualScans backend')
+
+})
+
+app.get("/admin/run-fakebatch", async (req, res) => {
+    try {
+        console.log("Launching Puppeteer fake batch...");
+
+        const browser = await puppeteer.launch({
+            executablePath: "/usr/bin/chromium",
+            headless: "new",
+            args: ["--no-sandbox", "--disable-setuid-sandbox"],
+        });
+
+        const page = await browser.newPage();
+        await page.goto("https://www.theblogstarter.com/", { waitUntil: "domcontentloaded" });
+
+        const title = await page.title();
+        console.log("Fake batch page title:", title);
+
+        await browser.close();
+
+        res.json({ success: true, title });
+    } catch (err) {
+        console.error("Fake batch failed:", err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+app.get("/admin/run-batch", async (req, res) => {
+    try {
+        console.log("Batch started");
+        await runBatch();
+        console.log("Batch finished");
+        res.json({ success: true, message: "Batch job finished" });
+    } catch (err) {
+        console.error("Batch failed:", err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+//start server
+app.listen(port, () => {
+    console.log(`server open on http://localhost:${port}`)
+})

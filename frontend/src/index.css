@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --bg-night: #0f1724; /* dark navy charcoal — night, but not pitch black */
+  --fg-bright: #e6eef8; /* light text for good contrast */
+  --muted: #9fb0c8; /* secondary/muted text */
+}
+
+body {
+  background: var(--bg-night);
+  color: var(--fg-bright);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial;
+  margin: 0;
+}
+
+/* * {
+  border: 2px solid red;
+} */

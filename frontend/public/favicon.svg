@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+  <rect width="72" height="72" rx="14" fill="#0f1724"/>
+  <!-- crescent moon -->
+  <path d="M46 28c-6-8.5-17.5-11.2-26-5.7 4.4 2.7 7.6 7.6 8.1 13.4 0.7 7.3-3.2 14.2-10.4 16.6 8.6 3.6 18.7-0.6 24.6-9.3 3.8-5.6 3.6-13.0 0.9-15z"
+        fill="#7fb3ff"/>
+  <!-- stylized S -->
+  <text x="20" y="48" font-family="Impact, sans-serif" font-size="28" font-weight="700" fill="#ffffff">S</text>
+</svg>
