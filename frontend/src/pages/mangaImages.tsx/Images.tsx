@@ -113,7 +113,7 @@ function MangaImages() {
                             : "bg-gray-100 text-gray-400 cursor-not-allowed"
                             }`}
                     >
-                        ⬅ Prev
+                        Prev
                     </button>
                     <button
                         disabled={!nextChapter}
@@ -123,7 +123,7 @@ function MangaImages() {
                             : "bg-gray-200 text-gray-400 cursor-not-allowed"
                             }`}
                     >
-                        Next ➡
+                        Next
                     </button>
                 </div>
             </div>
@@ -135,7 +135,7 @@ function MangaImages() {
 
             {/* Chapter Images */}
             <div className="flex flex-col items-center">
-                {mangaImagesData.images.slice(1, -1).map((page, index) => (
+                {mangaImagesData.images.slice(6, -1).map((page, index) => (
                     <img
                         key={index}
                         loading="lazy"
@@ -156,7 +156,7 @@ function MangaImages() {
                         : "bg-gray-100 text-gray-400 cursor-not-allowed"
                         }`}
                 >
-                    ⬅ Prev
+                    Prev
                 </button>
                 <button
                     disabled={!nextChapter}
@@ -166,7 +166,7 @@ function MangaImages() {
                         : "bg-blue-100 text-gray-400 cursor-not-allowed"
                         }`}
                 >
-                    Next ➡
+                    Next
                 </button>
             </div>
 

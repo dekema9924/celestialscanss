@@ -87,7 +87,7 @@ function Hero() {
                 {/* Cover Image */}
                 <div className="shrink-0 w-36 md:w-52 transition-all duration-500">
                     <img
-                        className="w-full h-full object-cover rounded-md shadow-md"
+                        className="w-full h-66 md:h-full object-cover rounded-md shadow-md"
                         src={currentManga?.cover ?? '/placeholder.jpg'}
                         alt={currentManga?.title ?? 'Cover'}
                     />
@@ -95,7 +95,7 @@ function Hero() {
 
                 {/* Text Content */}
                 <div className="flex-1 relative">
-                    <h2 className="capitalize text-2xl md:text-4xl font-semibold leading-tight">
+                    <h2 className="capitalize  w-30 md:w-full text-2xl md:text-4xl font-semibold leading-tight">
                         {currentManga?.title ?? 'Title'}
                     </h2>
 

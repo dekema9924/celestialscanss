@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getMangaDetails } from "../../api/getData";
 import { useParams, Link } from "react-router-dom";
 import Chapters from "./Chapters";
+import { slugMangaTitle } from "../../utils/slugTitle";
 
 export interface ChapterInterface {
     _id?: string;
@@ -52,7 +53,7 @@ function MangaDetailsPage() {
         <>
             <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 sm:py-6 flex justify-between items-center">
                 <Link to="/" className="text-white text-lg font-semibold hover:underline">
-                    ← Back to Home
+                    Back to Home
                 </Link>
                 <div></div> {/* Placeholder for alignment */}
             </div>
@@ -94,11 +95,14 @@ function MangaDetailsPage() {
                         {/* Buttons */}
                         <div className="flex flex-col sm:flex-row justify-center sm:justify-start gap-3 mt-2">
                             <button className="px-4 py-2 rounded-md bg-blue-300 text-black font-semibold hover:bg-blue-400 transition">
-                                📑 Bookmark
+                                Bookmark
                             </button>
-                            <button className="px-4 py-2 rounded-md bg-orange-500 text-white font-semibold hover:bg-orange-600 transition">
-                                ▶ Start Reading
-                            </button>
+                            <Link to={`/manga/${slugMangaTitle(mangadetails.title)}/${mangadetails.mangaId}/${mangadetails.chapters[0]?.number}`} >
+
+                                <button className="px-4 py-2 rounded-md bg-orange-500 text-white font-semibold hover:bg-orange-600 transition">
+                                    ▶ Start Reading
+                                </button>
+                            </Link>
                         </div>
 
                         {/* Genres */}
