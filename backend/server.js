@@ -54,11 +54,16 @@ app.get('/', (req, res) => {
 app.get("/admin/run-batch", async (req, res) => {
     try {
         console.log("Batch started");
-        await runBatch();
-        console.log("Batch finished");
-        res.json({ success: true, message: "Batch job finished" });
+
+        // Run batch in background (don't await it)
+        runBatch()
+            .then(() => console.log("Batch finished"))
+            .catch(err => console.error("Batch failed:", err));
+
+        // Respond immediately
+        res.json({ success: true, message: "Batch job started in background" });
     } catch (err) {
-        console.error("Batch failed:", err);
+        console.error("Failed to trigger batch:", err);
         res.status(500).json({ error: err.message });
     }
 });
