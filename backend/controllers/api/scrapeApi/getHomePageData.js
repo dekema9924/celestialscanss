@@ -8,8 +8,10 @@ const { APIURL } = require('../../../config/url');
 
 const getHomePageData = async (browser) => {
 
+    console.log("✅ Puppeteer is running on Render, opening:", APIURL);
 
     const page = await browser.newPage();
+
     await page.goto(APIURL, {
         waitUntil: 'networkidle2'
     });

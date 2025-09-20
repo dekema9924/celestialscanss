@@ -9,11 +9,12 @@ const pLimit = (...args) => require('p-limit').default(...args);
 
 const runBatch = async () => {
 
+
     const concurrency = 3; // 3 chap scraped at a time,
     const limit = pLimit(concurrency);
 
     const browser = await puppeteer.launch({
-        headless: process.env.NODE_ENV === "production" ? "new" : true, // use new headless on Render, classic locally
+        headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors'],
         ignoreHTTPSErrors: true,
         protocolTimeout: 120000, // 2 minutes
