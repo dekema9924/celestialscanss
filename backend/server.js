@@ -1,6 +1,4 @@
 const dotenv = require("dotenv");
-const puppeteer = require("puppeteer");
-
 dotenv.config();
 const port = 3001
 const express = require('express')
@@ -11,11 +9,10 @@ const cors = require('cors')
 const runBatch = require('./scripts/fetchAlldetails');
 require('./config/mongoose')
 
-//middlewares
 //cors config
 const allowedOrigins = [
     "http://localhost:5173", // dev
-    "https://celestialscans.netlify.app/" // prod
+    "https://celestialscans.netlify.app" // prod
 ];
 
 app.use(cors({
@@ -50,30 +47,7 @@ app.get('/', (req, res) => {
 
 })
 
-app.get("/admin/run-fakebatch", async (req, res) => {
-    try {
-        console.log("Launching Puppeteer fake batch...");
 
-        const browser = await puppeteer.launch({
-            executablePath: "/usr/bin/chromium",
-            headless: "new",
-            args: ["--no-sandbox", "--disable-setuid-sandbox"],
-        });
-
-        const page = await browser.newPage();
-        await page.goto("https://www.theblogstarter.com/", { waitUntil: "domcontentloaded" });
-
-        const title = await page.title();
-        console.log("Fake batch page title:", title);
-
-        await browser.close();
-
-        res.json({ success: true, title });
-    } catch (err) {
-        console.error("Fake batch failed:", err);
-        res.status(500).json({ error: err.message });
-    }
-});
 
 app.get("/admin/run-batch", async (req, res) => {
     try {
