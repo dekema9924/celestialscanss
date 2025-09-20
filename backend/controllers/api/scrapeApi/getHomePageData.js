@@ -7,13 +7,7 @@ const { APIURL } = require('../../../config/url');
 //popular today
 
 const getHomePageData = async (browser) => {
-    // Launch the browser and open a new blank page
-    // const browser = await puppeteer.launch({
-    //     headless: true, // set false if you want to watch the browser
-    //     args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors'],
-    //     ignoreHTTPSErrors: true
 
-    // });
 
     const page = await browser.newPage();
     await page.goto(APIURL, {
