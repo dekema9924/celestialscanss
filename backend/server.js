@@ -15,7 +15,7 @@ require('./config/mongoose')
 //cors config
 const allowedOrigins = [
     "http://localhost:5173", // dev
-    "https://glistening-fairy-45ce54.netlify.app" // prod
+    "https://celestialscans.netlify.app/" // prod
 ];
 
 app.use(cors({
