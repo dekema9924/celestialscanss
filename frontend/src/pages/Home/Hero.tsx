@@ -125,7 +125,7 @@ function Hero() {
 
 
             {/* Carousel Arrows */}
-            <div className="absolute bottom-6 right-6 flex gap-3 z-50">
+            <div className="absolute bottom-6 right-6 flex gap-3 z-30">
                 <button
                     onClick={handlePrev}
                     className="bg-gray-600/80 hover:bg-gray-500 px-4 py-2 rounded-md font-semibold transition"

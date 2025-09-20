@@ -15,8 +15,8 @@ function MultiCarousel({ children }: MultiCarouselProps) {
         },
         tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 4,
-            slidesToSlide: 3,
+            items: 3,
+            slidesToSlide: 2,
         },
         mobile: {
             breakpoint: { max: 464, min: 0 },
@@ -37,7 +37,7 @@ function MultiCarousel({ children }: MultiCarouselProps) {
             customTransition="transform 700ms ease-in-out"
             transitionDuration={700}
             containerClass="carousel-container"
-            // removeArrowOnDeviceType={["tablet", "mobile"]}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
             dotListClass="custom-dot-list-style"
             itemClass="px-2"
         >
