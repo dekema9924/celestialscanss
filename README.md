@@ -4,8 +4,8 @@ Welcome to **CelestialScans**, a full-stack manga web app that scrapes the lates
 
 Built using the **MERN stack** (MongoDB, Express.js, React, Node.js) with web scraping powered by **Puppeteer** and **Cheerio**.
 
-![CelestialScans UI](./screenshots/homepage.png)
-![CelestialScans Title Page](./screenshots/titlepage.png)
+![CelestialScans UI](/frontend/public/screenshots/homepage.png)
+![CelestialScans Title Page](/frontend/public/screenshots/titlepage.png)
 
 ---
 
@@ -29,5 +29,3 @@ Built using the **MERN stack** (MongoDB, Express.js, React, Node.js) with web sc
 - **Scraping:** Puppeteer (for headless browser), Cheerio (for parsing HTML)
 
 ---
-
-## 📂 Folder Structure
